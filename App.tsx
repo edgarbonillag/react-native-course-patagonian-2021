@@ -1,12 +1,16 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Alert, Image, StyleSheet, Text, View } from 'react-native';
+
+import { DefaultButton } from './src/components';
 
 import { colors } from './src/utils/theme';
-import { DEVICE_HEIGHT, DEVICE_WIDTH } from './src/utils/dimensions';
+import { DEVICE_WIDTH } from './src/utils/dimensions';
+
+const showAlert = () => {
+  Alert.alert('Hola!');
+};
 
 const App = () => {
-  console.log('Device height -> ', DEVICE_HEIGHT);
-  console.log('Device width -> ', DEVICE_WIDTH);
   return (
     <View style={styles.mainContainer}>
       <Text style={styles.title}>Título</Text>
@@ -16,6 +20,7 @@ const App = () => {
         style={styles.image}
         resizeMode="contain"
       />
+      <DefaultButton onPress={showAlert} />
     </View>
   );
 };
