@@ -16,11 +16,17 @@ const App = () => {
       <Text style={styles.title}>Título</Text>
       <Text>Subtitulo</Text>
       <Image
+        resizeMode="contain"
         source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
         style={styles.image}
-        resizeMode="contain"
       />
-      <DefaultButton onPress={showAlert} />
+      <DefaultButton
+        color={colors.mainOrange}
+        // additionalStyle={styles.button}
+        onPress={showAlert}
+        text="Hola"
+        textSize={24}
+      />
     </View>
   );
 };
@@ -44,6 +50,10 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     minHeight: 100,
     width: DEVICE_WIDTH * 0.5,
+  },
+  button: {
+    backgroundColor: 'green',
+    width: 50,
   },
 });
 
