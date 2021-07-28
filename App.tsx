@@ -20,13 +20,7 @@ const App = () => {
         source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
         style={styles.image}
       />
-      <DefaultButton
-        color={colors.mainOrange}
-        // additionalStyle={styles.button}
-        onPress={showAlert}
-        text="Hola"
-        textSize={24}
-      />
+      <DefaultButton onPress={showAlert} text="Hola" textSize={24} variant="secondary" />
     </View>
   );
 };
@@ -49,11 +43,7 @@ const styles = StyleSheet.create({
   image: {
     aspectRatio: 1,
     minHeight: 100,
-    width: DEVICE_WIDTH * 0.5,
-  },
-  button: {
-    backgroundColor: 'green',
-    width: 50,
+    width: DEVICE_WIDTH * 0.4,
   },
 });
 
