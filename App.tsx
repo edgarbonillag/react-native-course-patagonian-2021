@@ -1,16 +1,22 @@
-import React from 'react';
-import { Alert, Image, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Image, Modal, StyleSheet, Text, View } from 'react-native';
 
 import { DefaultButton } from './src/components';
 
 import { colors } from './src/utils/theme';
 import { DEVICE_WIDTH } from './src/utils/dimensions';
 
-const showAlert = () => {
-  Alert.alert('Hola!');
-};
-
 const App = () => {
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const showModal = () => {
+    setModalVisible(true);
+  };
+
+  const hideModal = () => {
+    setModalVisible(false);
+  };
+
   return (
     <View style={styles.mainContainer}>
       <Text style={styles.title}>Título</Text>
@@ -20,7 +26,15 @@ const App = () => {
         source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
         style={styles.image}
       />
-      <DefaultButton onPress={showAlert} text="Hola" textSize={24} variant="secondary" />
+      <DefaultButton onPress={showModal} text="Mostrar Hola Mundo" variant="secondary" />
+      <Modal animationType="fade" transparent visible={isModalVisible}>
+        <View style={styles.modalMainContainer}>
+          <View style={styles.modalInnerAlert}>
+            <Text style={styles.modalText}>¡Hola Mundo!</Text>
+            <DefaultButton onPress={hideModal} text="Ok" additionalStyle={styles.modalButton} />
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -32,6 +46,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     width: '100%',
+  },
+  modalMainContainer: {
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.2)',
+    flex: 1,
+    justifyContent: 'center',
+    width: '100%',
+  },
+  modalInnerAlert: {
+    alignItems: 'center',
+    backgroundColor: colors.white,
+    borderRadius: 13,
+    justifyContent: 'center',
+    paddingBottom: 20,
+    paddingTop: 10,
+    width: '65%',
+  },
+  modalButton: {
+    height: 40,
+  },
+  modalText: {
+    fontSize: 18,
+    marginVertical: 20,
   },
   title: {
     color: colors.mainOrange,
