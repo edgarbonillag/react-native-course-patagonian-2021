@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
-import { AlertModal, DefaultButton } from './src/components';
+import { AlertModal, DefaultButton, Typography } from './src/components';
 
 import { colors } from './src/utils/theme';
 import { DEVICE_WIDTH } from './src/utils/dimensions';
@@ -19,8 +19,12 @@ const App = () => {
 
   return (
     <View style={styles.mainContainer}>
-      <Text style={styles.title}>Título</Text>
-      <Text>Subtitulo</Text>
+      <Typography color={colors.mainOrange} size={30}>
+        Título
+      </Typography>
+      <View style={styles.subtitle}>
+        <Typography>Subtitulo</Typography>
+      </View>
       <Image
         resizeMode="contain"
         source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
@@ -47,11 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
   },
-  title: {
-    color: colors.mainOrange,
-    fontSize: 30,
-    fontWeight: 'bold',
-    fontStyle: 'italic',
+  subtitle: {
     marginBottom: 10,
   },
   image: {

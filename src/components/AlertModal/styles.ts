@@ -21,8 +21,7 @@ const styles = StyleSheet.create({
   button: {
     height: 40,
   },
-  text: {
-    fontSize: 18,
+  textContainer: {
     marginVertical: 20,
   },
 });

@@ -1,7 +1,9 @@
 import React from 'react';
-import { Modal, Text, View } from 'react-native';
+import { Modal, View } from 'react-native';
 
 import DefaultButton from '../DefaultButton';
+import Typography from '../Typography';
+
 import styles from './styles';
 
 interface Props {
@@ -24,7 +26,9 @@ const AlertModal = ({
   <Modal animationType="fade" transparent visible={visible}>
     <View style={styles.mainContainer}>
       <View style={styles.innerAlert}>
-        <Text style={styles.text}>{message}</Text>
+        <View style={styles.textContainer}>
+          <Typography size={18}>{message}</Typography>
+        </View>
         <DefaultButton
           additionalStyle={styles.button}
           onPress={onPressPrimaryButton}
