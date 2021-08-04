@@ -19,11 +19,11 @@ const App = () => {
 
   return (
     <View style={styles.mainContainer}>
-      <Typography color={colors.mainOrange} size={30}>
+      <Typography color={colors.mainOrange} size={30} variant="bold">
         Título
       </Typography>
       <View style={styles.subtitle}>
-        <Typography>Subtitulo</Typography>
+        <Typography variant="medium">Subtitulo</Typography>
       </View>
       <Image
         resizeMode="contain"

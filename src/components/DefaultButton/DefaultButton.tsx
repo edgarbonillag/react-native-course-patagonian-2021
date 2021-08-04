@@ -25,7 +25,11 @@ const DefaultButton = ({
       style={[styles.mainContainer, styles[variant], additionalStyle]}
       onPress={onPress}
     >
-      <Typography color={buttonTextColors[variant] || colors.white} size={textSize}>
+      <Typography
+        color={buttonTextColors[variant] || colors.white}
+        size={textSize}
+        variant="medium"
+      >
         {text}
       </Typography>
     </TouchableOpacity>
