@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, View } from 'react-native';
 
 import DefaultButton from '../DefaultButton';
+import Separator from '../Separator';
 import Typography from '../Typography';
 
 import styles from './styles';
@@ -35,12 +36,15 @@ const AlertModal = ({
           text={primaryButtonText}
         />
         {secondaryButtonText && onPressSecondaryButton ? (
-          <DefaultButton
-            additionalStyle={styles.button}
-            onPress={onPressSecondaryButton}
-            text={secondaryButtonText}
-            variant="secondary"
-          />
+          <>
+            <Separator size={10} />
+            <DefaultButton
+              additionalStyle={styles.button}
+              onPress={onPressSecondaryButton}
+              text={secondaryButtonText}
+              variant="secondary"
+            />
+          </>
         ) : null}
       </View>
     </View>

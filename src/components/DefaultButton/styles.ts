@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center',
     height: 50,
-    marginTop: 10,
     width: '80%',
   },
   primary: {

@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Text } from 'react-native';
+
 import { colors } from '../../utils/theme';
 
 const typographyVariant = {
