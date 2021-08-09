@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { ExperimentalScreen } from './src/screens';
+import { WelcomeScreen } from './src/screens';
 
 const App = () => {
-  return <ExperimentalScreen />;
+  return <WelcomeScreen />;
 };
 
 export default App;
