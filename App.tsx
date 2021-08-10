@@ -1,9 +1,16 @@
 import React from 'react';
+// import { NavigationContainer } from '@react-navigation/native';
+// Workaround to not let TypeScript analyze this library
+const { NavigationContainer } = require('@react-navigation/native');
 
-import { WelcomeScreen } from './src/screens';
+import MainNavigator from './src/navigation/MainNavigator';
 
 const App = () => {
-  return <WelcomeScreen />;
+  return (
+    <NavigationContainer>
+      <MainNavigator />
+    </NavigationContainer>
+  );
 };
 
 export default App;
