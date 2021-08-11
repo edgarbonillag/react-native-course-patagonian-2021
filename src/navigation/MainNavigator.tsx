@@ -1,15 +1,15 @@
 import React from 'react';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const { createNativeStackNavigator } = require('@react-navigation/native-stack');
 
-import { ExperimentalScreen, WelcomeScreen } from '../screens';
+import AuthStack from './AuthStack';
+import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 
 const MainNavigator = () => (
-  <Stack.Navigator initialRouteName="Welcome">
-    <Stack.Screen name="Experimental" component={ExperimentalScreen} />
-    <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
+  <Stack.Navigator initialRouteName="AuthStack" screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="AuthStack" component={AuthStack} />
+    <Stack.Screen name="TabNavigator" component={TabNavigator} />
   </Stack.Navigator>
 );
 
