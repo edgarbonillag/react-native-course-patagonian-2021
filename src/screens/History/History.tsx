@@ -1,14 +1,17 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { Typography } from '../../components';
-
+import { DefaultButton, Separator, Typography } from '../../components';
 import styles from './styles';
+
+import { resetNavigation } from '../../navigation/controls';
 
 const HistoryScreen = () => {
   return (
     <View style={styles.mainContainer}>
-      <Typography>History Screen</Typography>
+      <Typography size={20}>History Screen</Typography>
+      <Separator size={10} />
+      <DefaultButton text="Log Out" onPress={resetNavigation} />
     </View>
   );
 };
