@@ -4,10 +4,11 @@ import React from 'react';
 const { NavigationContainer } = require('@react-navigation/native');
 
 import MainNavigator from './src/navigation/MainNavigator';
+import { navigationRef } from './src/navigation/controls';
 
 const App = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <MainNavigator />
     </NavigationContainer>
   );
