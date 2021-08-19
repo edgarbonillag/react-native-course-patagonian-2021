@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Image, SafeAreaView, ScrollView, View } from 'react-native';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 import { AlertModal, DefaultButton, Separator, Typography } from '../../components';
 import styles from './styles';
@@ -30,6 +31,7 @@ const ExperimentalScreen = () => {
           </Typography>
           <Typography variant="medium">Subtitulo</Typography>
           <Separator size={10} />
+          <MaterialIcon name="search" size={30} color={colors.mainOrange} />
           {arr.map((item) => (
             <View key={`image-${item}`}>
               <Image
