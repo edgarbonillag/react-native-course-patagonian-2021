@@ -38,7 +38,7 @@ const DefaultButton = ({
 
 DefaultButton.defaultProps = {
   additionalStyle: {},
-  textSize: 18,
+  textSize: 16,
   variant: 'primary',
 };
 

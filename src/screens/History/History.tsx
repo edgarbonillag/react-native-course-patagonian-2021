@@ -9,7 +9,7 @@ import { resetNavigation } from '../../navigation/controls';
 const HistoryScreen = () => {
   return (
     <View style={styles.mainContainer}>
-      <Typography size={20}>History Screen</Typography>
+      <Typography size={18}>History Screen</Typography>
       <Separator size={10} />
       <DefaultButton text="Log Out" onPress={resetNavigation} />
     </View>

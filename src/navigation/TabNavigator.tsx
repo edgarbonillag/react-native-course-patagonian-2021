@@ -40,6 +40,7 @@ const navigatorScreenOptions = ({ route }: { route: Route }) => ({
   tabBarLabelStyle: {
     fontSize: 12,
   },
+  headerShown: false,
 });
 
 const TabNavigator = () => {

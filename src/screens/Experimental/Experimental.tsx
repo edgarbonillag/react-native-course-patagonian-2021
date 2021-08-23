@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Image, SafeAreaView, ScrollView, View } from 'react-native';
+import { Image, ScrollView, View } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
-import { AlertModal, DefaultButton, Separator, Typography } from '../../components';
+import { AlertModal, DefaultButton, Header, Separator, Typography } from '../../components';
 import styles from './styles';
 
 import { colors } from '../../utils/theme';
@@ -23,7 +23,7 @@ const ExperimentalScreen = () => {
 
   return (
     <>
-      <SafeAreaView style={styles.safeArea} />
+      <Header title="Experimental" />
       <ScrollView style={styles.scrollView}>
         <View style={styles.mainContainer}>
           <Typography color={colors.mainOrange} size={30} variant="bold">
