@@ -1,7 +1,5 @@
 import React from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
-// Workaround to not let TypeScript analyze this library
-const { NavigationContainer } = require('@react-navigation/native');
+import { NavigationContainer } from '@react-navigation/native';
 
 import MainNavigator from './src/navigation/MainNavigator';
 import { navigationRef } from './src/navigation/controls';

@@ -1,8 +1,8 @@
-const {
+import {
   createNavigationContainerRef,
   CommonActions,
   StackActions,
-} = require('@react-navigation/native');
+} from '@react-navigation/native';
 
 export const navigationRef = createNavigationContainerRef();
 

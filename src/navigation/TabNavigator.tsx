@@ -1,7 +1,7 @@
 import React from 'react';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { RouteProp } from '@react-navigation/native';
-const { createBottomTabNavigator } = require('@react-navigation/bottom-tabs');
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { HistoryScreen, HomeScreen } from '../screens';
 
