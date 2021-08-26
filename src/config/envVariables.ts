@@ -1,3 +1,6 @@
 import Config from 'react-native-config';
 
-export const API_URL = Config.API_URL;
+const ENV = Config.ENV;
+export const isProduction = ENV === 'production';
+
+export const API_URL = isProduction ? Config.PROD_API_URL : Config.STAGING_API_URL;

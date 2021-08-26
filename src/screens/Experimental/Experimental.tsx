@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, ScrollView, View } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
@@ -12,6 +12,12 @@ const arr = Array.from({ length: 6 }, (_, index) => index);
 
 const ExperimentalScreen = () => {
   const [isModalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    console.log('Inside useEffect');
+  }, []);
+
+  console.log('Inside Experimental');
 
   const showModal = () => {
     setModalVisible(true);
