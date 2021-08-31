@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, SafeAreaView, ScrollView, View } from 'react-native';
+import { ActivityIndicator, Alert, ScrollView, SafeAreaView, View } from 'react-native';
 
-import { DefaultButton, Separator, Typography } from '../../components';
+import { DefaultButton, Header, Separator, Typography } from '../../components';
 import styles from './styles';
 
 import { getAllBooks } from '../../services';
 import { goToScreen } from '../../navigation/controls';
+import { colors } from '../../utils/theme';
 
 const goToExperimentalScreen = () => {
   goToScreen('Experimental');
@@ -13,25 +14,39 @@ const goToExperimentalScreen = () => {
 
 const HomeScreen = () => {
   const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const dis = async () => {
-      try {
-        const { success, data } = await getAllBooks();
-        if (success) {
-          setBooks(data);
-        } else {
-          Alert.alert('Error getting books on Home Screen');
-        }
-      } catch (error) {
-        console.log('Error getting books on Home Screen', error);
+  const getBooksData = async () => {
+    setLoading(true);
+    try {
+      const { success, data } = await getAllBooks();
+      if (success) {
+        setBooks(data);
+      } else {
         Alert.alert('Error getting books on Home Screen');
       }
-    };
-    dis();
+    } catch (error) {
+      console.log('Error getting books on Home Screen', error);
+      Alert.alert('Error getting books on Home Screen');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getBooksData();
   }, []);
 
-  console.log('Inside HomeScreen');
+  if (loading) {
+    return (
+      <>
+        <Header showBackButton={false} title="Home Screen" />
+        <View style={styles.wholeScreenCenter}>
+          <ActivityIndicator size="large" color={colors.mainOrange} />
+        </View>
+      </>
+    );
+  }
 
   return (
     <>

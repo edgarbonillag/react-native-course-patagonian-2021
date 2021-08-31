@@ -12,7 +12,7 @@ export const getAllBooks = async () => {
     } else {
       serviceResponse = { success: false, data: parsedResponse };
     }
-    console.log('serviceResponse', JSON.stringify(serviceResponse, null, 2));
+
     return serviceResponse;
   } catch (error) {
     console.log('Error fetching all books: ', error);
