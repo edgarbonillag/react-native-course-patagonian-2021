@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Alert, FlatList, View } from 'react-native';
+import { useNetInfo } from '@react-native-community/netinfo';
 
 import { DefaultButton, Header, Separator, Typography } from '../../components';
 import styles from './styles';
@@ -25,6 +26,8 @@ const HomeScreen = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const netInfo = useNetInfo();
+
   const getBooksData = async () => {
     setLoading(true);
     try {
@@ -45,6 +48,14 @@ const HomeScreen = () => {
   useEffect(() => {
     getBooksData();
   }, []);
+
+  if (!netInfo.isConnected) {
+    return (
+      <View style={styles.wholeScreenCenter}>
+        <Typography size={20}>You don't have internet :'(</Typography>
+      </View>
+    );
+  }
 
   if (loading) {
     return (
