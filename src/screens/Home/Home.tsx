@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Alert, ScrollView, SafeAreaView, View } from 'react-native';
+import { ActivityIndicator, Alert, FlatList, View } from 'react-native';
 
 import { DefaultButton, Header, Separator, Typography } from '../../components';
 import styles from './styles';
@@ -11,6 +11,15 @@ import { colors } from '../../utils/theme';
 const goToExperimentalScreen = () => {
   goToScreen('Experimental');
 };
+
+const ListItem = ({ title }: { title: string }) => (
+  <View style={styles.listItemContainer}>
+    <Typography>{title}</Typography>
+  </View>
+);
+
+// @ts-ignore
+const renderFlatlistItem = ({ item }) => <ListItem title={item.title} />;
 
 const HomeScreen = () => {
   const [books, setBooks] = useState([]);
@@ -50,17 +59,19 @@ const HomeScreen = () => {
 
   return (
     <>
-      <SafeAreaView />
-      <ScrollView style={styles.scrollView}>
-        <View style={styles.mainContainer}>
-          <Typography size={20} variant="bold">
-            Home Screen
-          </Typography>
-          <Separator size={10} />
-          <DefaultButton text="Go To Experimental Screen" onPress={goToExperimentalScreen} />
-          <Typography>{JSON.stringify(books, null, 2)}</Typography>
-        </View>
-      </ScrollView>
+      <Header showBackButton={false} title="Home Screen" />
+      <View style={styles.mainContainer}>
+        <Separator size={20} />
+        <DefaultButton text="Go To Experimental Screen" onPress={goToExperimentalScreen} />
+        <Separator size={20} />
+        <FlatList
+          refreshing={loading}
+          onRefresh={getBooksData}
+          data={books}
+          renderItem={renderFlatlistItem}
+          style={styles.flatList}
+        />
+      </View>
     </>
   );
 };
