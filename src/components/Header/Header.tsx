@@ -1,6 +1,7 @@
 import React from 'react';
-import { SafeAreaView, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Separator from '../Separator';
 import Typography from '../Typography';
@@ -26,7 +27,7 @@ const Header = ({
 }: Props) => {
   return (
     <>
-      <SafeAreaView />
+      <SafeAreaView edges={['top']} />
       <View style={styles.mainContainer}>
         {showBackButton ? (
           <TouchableOpacity onPress={onPressBackButton} style={styles.sideButtonContainer}>
