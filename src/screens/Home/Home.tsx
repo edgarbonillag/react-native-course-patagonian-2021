@@ -19,12 +19,13 @@ const ListItem = ({ title }: { title: string }) => (
   </View>
 );
 
-// @ts-ignore
-const renderFlatlistItem = ({ item }) => <ListItem title={item.title} />;
+const flatlistKeyExtractor = (item: Book) => `${item.id}`;
+
+const renderFlatlistItem = ({ item }: { item: Book }) => <ListItem title={item.title} />;
 
 const HomeScreen = () => {
-  const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [books, setBooks] = useState<Book[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const netInfo = useNetInfo();
 
@@ -76,6 +77,7 @@ const HomeScreen = () => {
         <DefaultButton text="Go To Experimental Screen" onPress={goToExperimentalScreen} />
         <Separator size={20} />
         <FlatList
+          keyExtractor={flatlistKeyExtractor}
           refreshing={loading}
           onRefresh={getBooksData}
           data={books}
