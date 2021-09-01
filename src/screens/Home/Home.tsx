@@ -15,7 +15,7 @@ const goToExperimentalScreen = () => {
 
 const ListItem = ({ title }: { title: string }) => (
   <TouchableOpacity
-    onPress={() => Alert.alert(`Este es el libro ${title}`)}
+    onPress={() => goToScreen('BookDetails')}
     style={styles.listItemContainerShadow}
   >
     <View style={styles.listItemContainer}>
