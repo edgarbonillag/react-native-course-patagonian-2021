@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Alert, FlatList, View } from 'react-native';
+import { ActivityIndicator, Alert, FlatList, TouchableOpacity, View } from 'react-native';
 import { useNetInfo } from '@react-native-community/netinfo';
 
 import { DefaultButton, Header, Separator, Typography } from '../../components';
@@ -14,9 +14,16 @@ const goToExperimentalScreen = () => {
 };
 
 const ListItem = ({ title }: { title: string }) => (
-  <View style={styles.listItemContainer}>
-    <Typography>{title}</Typography>
-  </View>
+  <TouchableOpacity
+    onPress={() => Alert.alert(`Este es el libro ${title}`)}
+    style={styles.listItemContainerShadow}
+  >
+    <View style={styles.listItemContainer}>
+      <Typography numberOfLines={2} align="center">
+        {title}
+      </Typography>
+    </View>
+  </TouchableOpacity>
 );
 
 const flatlistKeyExtractor = (item: Book) => `${item.id}`;
@@ -82,6 +89,8 @@ const HomeScreen = () => {
           onRefresh={getBooksData}
           data={books}
           renderItem={renderFlatlistItem}
+          ItemSeparatorComponent={Separator}
+          contentContainerStyle={styles.flatlistContent}
           style={styles.flatList}
         />
       </View>

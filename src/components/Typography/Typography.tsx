@@ -13,6 +13,7 @@ interface Props {
   align?: 'left' | 'center' | 'right' | 'justify';
   children: ReactNode;
   color?: string;
+  numberOfLines?: number;
   size?: number;
   variant?: keyof typeof typographyVariant;
 }
@@ -32,11 +33,11 @@ const getTextStyle = ({
   return textStyle;
 };
 
-const Typography = ({ align, children, color, size, variant }: Props) => {
+const Typography = ({ align, children, color, numberOfLines, size, variant }: Props) => {
   const textStyle = getTextStyle({ align, color, size, variant });
 
   return (
-    <Text allowFontScaling={false} style={textStyle}>
+    <Text allowFontScaling={false} style={textStyle} numberOfLines={numberOfLines}>
       {children}
     </Text>
   );
