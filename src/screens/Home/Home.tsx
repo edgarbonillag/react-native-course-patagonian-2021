@@ -13,9 +13,9 @@ const goToExperimentalScreen = () => {
   goToScreen('Experimental');
 };
 
-const ListItem = ({ title }: { title: string }) => (
+const ListItem = ({ id, title }: { id: number; title: string }) => (
   <TouchableOpacity
-    onPress={() => goToScreen('BookDetails')}
+    onPress={() => goToScreen('BookDetails', { id, title })}
     style={styles.listItemContainerShadow}
   >
     <View style={styles.listItemContainer}>
@@ -28,7 +28,9 @@ const ListItem = ({ title }: { title: string }) => (
 
 const flatlistKeyExtractor = (item: Book) => `${item.id}`;
 
-const renderFlatlistItem = ({ item }: { item: Book }) => <ListItem title={item.title} />;
+const renderFlatlistItem = ({ item }: { item: Book }) => (
+  <ListItem id={item.id} title={item.title} />
+);
 
 const HomeScreen = () => {
   const [books, setBooks] = useState<Book[]>([]);

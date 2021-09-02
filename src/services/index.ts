@@ -1,1 +1,1 @@
-export { getAllBooks } from './books';
+export { getAllBooks, getBookById } from './books';

@@ -7,6 +7,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
   },
+  wholeScreenCenter: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+    width: '100%',
+  },
 });
 
 export default styles;

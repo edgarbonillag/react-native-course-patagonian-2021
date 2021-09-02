@@ -37,7 +37,7 @@ const Header = ({
           <Separator isHorizontal size={40} />
         )}
         <View style={styles.titleContainer}>
-          <Typography variant="bold" size={17}>
+          <Typography align="center" numberOfLines={2} variant="bold" size={17}>
             {title}
           </Typography>
         </View>
