@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ActivityIndicator, FlatList, TouchableOpacity, View } from 'react-native';
 import { useNetInfo } from '@react-native-community/netinfo';
 
@@ -38,6 +38,10 @@ const HomeScreen = () => {
 
   const netInfo = useNetInfo();
 
+  const toggleRefreshFlag = useCallback(() => {
+    setRefreshFlag(!refreshFlag);
+  }, [refreshFlag]);
+
   if (!netInfo.isConnected) {
     return (
       <View style={styles.wholeScreenCenter}>
@@ -62,7 +66,7 @@ const HomeScreen = () => {
       <View style={styles.wholeScreenCenter}>
         <Typography size={20}>An unknown error occurred :'(</Typography>
         <Separator size={15} />
-        <DefaultButton text="Retry" onPress={() => setRefreshFlag(!refreshFlag)} />
+        <DefaultButton text="Retry" onPress={toggleRefreshFlag} />
       </View>
     );
   }
@@ -77,7 +81,7 @@ const HomeScreen = () => {
         <FlatList
           keyExtractor={flatlistKeyExtractor}
           refreshing={loading}
-          onRefresh={() => setRefreshFlag(!refreshFlag)}
+          onRefresh={toggleRefreshFlag}
           data={books}
           renderItem={renderFlatlistItem}
           ItemSeparatorComponent={Separator}
