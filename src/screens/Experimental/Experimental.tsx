@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, ScrollView, View } from 'react-native';
+import { Image, ScrollView, TextInput, View } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 import { AlertModal, DefaultButton, Header, Separator, Typography } from '../../components';
@@ -12,6 +12,7 @@ const arr = Array.from({ length: 6 }, (_, index) => index);
 
 const ExperimentalScreen = () => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [inputText, setInputText] = useState('');
 
   useEffect(() => {
     console.log('Inside useEffect');
@@ -38,6 +39,20 @@ const ExperimentalScreen = () => {
           <Typography variant="medium">Subtitulo</Typography>
           <Separator size={10} />
           <MaterialIcon name="search" size={30} color={colors.mainOrange} />
+          <Separator size={10} />
+          <TextInput
+            allowFontScaling={false}
+            autoCapitalize="none"
+            autoCorrect={false}
+            // editable={false}
+            // keyboardType="numeric"
+            placeholder="Write something..."
+            value={inputText}
+            // onChangeText={(text) => setInputText(text)}
+            onChangeText={setInputText}
+            style={styles.textInput}
+          />
+          <Separator size={10} />
           {arr.map((item) => (
             <View key={`image-${item}`}>
               <Image
