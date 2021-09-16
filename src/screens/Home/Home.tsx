@@ -7,6 +7,7 @@ import styles from './styles';
 
 import { goToScreen } from '../../navigation/controls';
 import { colors } from '../../utils/theme';
+import { IS_ANDROID } from '../../utils/constants';
 import useBooksData from './hooks/useBooksData';
 
 const goToExperimentalScreen = () => {
@@ -14,14 +15,13 @@ const goToExperimentalScreen = () => {
 };
 
 const ListItem = ({ id, title }: { id: number; title: string }) => (
-  <TouchableOpacity
-    onPress={() => goToScreen('BookDetails', { id, title })}
-    style={styles.listItemContainerShadow}
-  >
-    <View style={styles.listItemContainer}>
-      <Typography numberOfLines={2} align="center">
-        {title}
-      </Typography>
+  <TouchableOpacity onPress={() => goToScreen('BookDetails', { id, title })}>
+    <View style={styles.listItemContainerShadow}>
+      <View style={[styles.listItemContainer, IS_ANDROID ? styles.listItemContainerShadow : null]}>
+        <Typography numberOfLines={2} align="center">
+          {title}
+        </Typography>
+      </View>
     </View>
   </TouchableOpacity>
 );
